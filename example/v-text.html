@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text用法实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-text用法实例</h1>
+<hr>
+<div id="app-v-text">
+    <div v-text="text"></div>
+    <div v-html="html_str"></div>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app-v-text",
+        data: {
+            text: "这是一段文本",
+            html_str: "<h3>这是一段html标题文本</h3>"
+        }
+    })
+</script>
+</body>
+</html>

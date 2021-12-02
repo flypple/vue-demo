@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind用法实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-bind用法实例</h1>
+    <div id="app-v-bind">
+        <div>
+            <p>
+                <img v-bind:src="imageSrc" width="200px">
+            </p>
+            <p>
+                <a :href="linkUrl" target="_blank">VUE官方文档</a>
+            </p>
+            <div :class="className">1. 绑定Class</div>
+            <div :class="{classA:isOk}">2. bool值动态绑定Class</div>
+            <div :class="[classA, classB]">3. 绑定Class数组</div>
+            <div :class="isOk?classA:classB">4. 三元运算符绑定Class</div>
+            <div>
+                <input type="checkbox" id="idOK" v-model="isOk">
+                <label for="idOK">isOk={{isOk}}</label>
+            </div>
+            <div :style="{color:red, fontSize:font}">5. 绑定Style</div>
+            <div :style="styleObj">6. 绑定Style对象</div>
+        </div>
+    </div>
+    <style>
+        .classA {
+            color: red;
+        }
+        .classB {
+            font-size: 200%;
+        }
+    </style>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app-v-bind",
+            data: {
+                imageSrc: "https://cn.vuejs.org/images/logo.svg",
+                linkUrl: "https://cn.vuejs.org/",
+                className: "classA",
+                isOk: true,
+                classA: "classA",
+                classB: "classB",
+                red: "red",
+                font: "200%",
+                styleObj: {
+                    color: "green",
+                    fontSize: "300%",
+                }
+            }
+        })
+    </script>
+</body>
+</html>

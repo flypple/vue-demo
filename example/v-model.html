@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model用法实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model用法实例</h1>
+    <div id="app-v-model">
+        <div>{{message}}</div>
+        <input type="text" v-model="message"><br>
+        <input type="text" v-model.lazy="message"><br>
+        <input type="text" v-model.number="message"><br>
+        <input type="text" v-model.trim="message"><br>
+        <hr>
+        <div>
+            <p>多选绑定数组</p>
+            <input type="checkbox" id="xiaoming" value="小明" v-model="names">
+            <label for="xiaoming">小明</label><br>
+            <input type="checkbox" id="zhangsan" value="张三" v-model="names">
+            <label for="zhangsan">张三</label><br>
+            <input type="checkbox" id="lisi" value="李四" v-model="names">
+            <label for="lisi">李四</label><br>
+            <p>{{names}}</p>
+        </div>
+        <hr>
+        <div>
+            <p>单选绑定数据</p>
+            <input type="radio" id="male" value="男" v-model="gender">
+            <label for="male">男</label><br>
+            <input type="radio" id="female" value="女" v-model="gender">
+            <label for="female">女</label><br>
+            <p>选定性别：{{gender}}</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app-v-model",
+            data: {
+                message: "abc",
+                names: [],
+                gender: "男"
+            }
+        })
+    </script>
+</body>
+</html>

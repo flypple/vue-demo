@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for用法演示</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for用法演</h1>
+    <div id="app-v-for">
+        <table>
+            <tr>
+               <th>姓名</th>
+               <th>年龄</th>
+            </tr>
+            <tr v-for="student in sortedStudents">
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app-v-for",
+            data: {
+                students: [
+                    {
+                        name: "小明",
+                        age: 13
+                    },
+                    {
+                        name: "小华",
+                        age: 14
+                    },
+                    {
+                        name: "小红",
+                        age: 9
+                    },
+                    {
+                        name: "张三",
+                        age: 7
+                    }
+                ]
+            },
+            computed: {
+                sortedStudents: function () {
+                    return this.students.sort(sortStudent)
+                }
+            },
+        })
+        function sortStudent(a, b) {
+            return a.age - b.age;
+        }
+    </script>
+</body>
+</html>

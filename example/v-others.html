@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>其他指令（v-pre & v-cloak & v-once）</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>其他指令（v-pre & v-cloak & v-once）</h1>
+    <hr>
+    <div id="app-v-others">
+        <div>{{ message }}</div>
+        <div v-pre>{{ message }}</div>
+        <div v-cloak>{{ cloakMessage }}</div>
+        <div v-once>{{ changeMessage }}</div>
+        <div>
+            <input v-model="changeMessage" type="text">
+        </div>
+        <div>{{changeMessage}}</div>
+        <div v-once>{{ changeMessage }}</div>
+    </div>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app-v-others",
+            data: {
+                message: 'Hello World!',
+                cloakMessage: '延迟渲染信息',
+                changeMessage: 'abc',
+            },
+        })
+    </script>
+</body>
+</html>
