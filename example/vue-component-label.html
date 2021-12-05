@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component标签实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component标签实例</h1>
+<hr>
+<div id="component-props">
+    <component is="customComponent1"></component>
+    <component v-bind:is="componentId"></component>
+</div>
+<script type="text/javascript">
+    let customComponent1 = {
+        template: `<div>这是自定义组件1</div>`
+    }
+    let customComponent2 = {
+        template: `<div>这是自定义组件2</div>`
+    }
+    let app = new Vue({
+        el: "#component-props",
+        data: {
+            componentId: 'customComponent2'
+        },
+        components: {
+            'customComponent1': customComponent1,
+            'customComponent2': customComponent2,
+        }
+    })
+</script>
+</body>
+</html>

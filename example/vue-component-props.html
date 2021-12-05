@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component选项实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component选项实例</h1>
+<hr>
+<div id="component-props">
+    <local-component name="我是自定义组件的名称" v-bind:from="from"></local-component>
+</div>
+<script type="text/javascript">
+    let app = new Vue({
+        el: "#component-props",
+        data: {
+            from: 'China'
+        },
+        components: {
+            'localComponent': {
+                template: `<div style="color:red">这是个局部组件，其自定义选项 name={{name}}, from={{from}}</div>`,
+                props: ['name', 'from']
+            }
+        }
+    })
+</script>
+</body>
+</html>

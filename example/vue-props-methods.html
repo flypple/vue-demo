@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods实例</h1>
+    <hr>
+    <div id="vue-methods">
+        <div>{{ num }}</div>
+        <div><button @click="add">调用add</button></div>
+        <div><extend-button @click.native="add"></extend-button></div>
+    </div>
+    <button onclick="app.add()">外部调用add</button>
+    <script type="text/javascript">
+        let extendButton = {
+            template: `<button>组件调用add</button>`
+        }
+        let app = new Vue({
+            el: "#vue-methods",
+            data: {
+                num: 1
+            },
+            methods: {
+                add() {
+                    this.num++
+                }
+            },
+            components: {
+                "extendButton": extendButton,
+            }
+        })
+    </script>
+</body>
+</html>

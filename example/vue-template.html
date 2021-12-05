@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>template三种写法</h1>
+    <hr>
+    <div id="template">
+        <h2>{{message}}</h2>
+    </div>
+    <div id="template2">
+        <h2>{{message}}</h2>
+        <template id="template_for_app2">
+            <h2 style="color: red">第二种写法：我是选项模板</h2>
+        </template>
+    </div>
+    <div id="template3">
+        <h2>{{message}}</h2>
+        <script type="x-template" id="template_for_app3">
+            <h2 style="color: red">第三种写法：我是选项模板</h2>
+        </script>
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#template",
+            data: {
+                message: 'Hello World!'
+            },
+            template: `<h2 style="color: red">第一种写法：我是选项模板</h2>`
+        })
+        let app2 = new Vue({
+            el: "#template2",
+            data: {
+                message: 'Hello World!'
+            },
+            template: "#template_for_app2"
+
+        })
+        let app3 = new Vue({
+            el: "#template3",
+            data: {
+                message: 'Hello World!'
+            },
+            template: "#template_for_app3"
+
+        })
+    </script>
+</body>
+</html>

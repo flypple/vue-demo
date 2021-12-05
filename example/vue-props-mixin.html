@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mixin实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixin实例</h1>
+    <hr>
+    <div id="vue-mixin">
+        <div>{{ num }}</div>
+        <div><button @click="add">调用add</button></div>
+    </div>
+    <script type="text/javascript">
+        let mixinMethods = {
+            updated() {
+                console.log("这是mixin的updated方法")
+            },
+            add() { // 将不被调用
+                console.log("这是mixin的add方法")
+            },
+        }
+        Vue.mixin({
+            updated() {
+                console.log("这是全局mixin的updated方法")
+            },
+            add() { // 将不被调用
+                console.log("这是全局mixin的add方法")
+            }
+        })
+        let app = new Vue({
+            el: "#vue-mixin",
+            data: {
+                num: 1,
+            },
+            methods: {
+                add() {
+                    this.num++
+                }
+            },
+            updated() {
+                console.log("这是原生的updated方法")
+            },
+            mixins: [mixinMethods]
+        })
+
+        //全局混入放在后面将不生效
+        /*Vue.mixin({
+            updated() {
+                console.log("这是全局mixin的updated方法")
+            }
+        })*/
+    </script>
+</body>
+</html>

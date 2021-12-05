@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>extend实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>extend实例</h1>
+<hr>
+    <div id="extend">
+        <div>
+            <linkedlabel></linkedlabel>
+        </div>
+        <div id="linkedLabel"></div>
+    </div>
+    <div>
+        <button onclick="destroy()">销毁label</button>
+    </div>
+    <script type="text/javascript">
+        let linkedLabel = Vue.extend({
+            template: "<p><a :href='url' target='_blank'>{{name}}</a></p>",
+            data: function (params) {
+                console.log(params)
+                return {
+                    url: 'https://cn.vuejs.org',
+                    name: 'vue官网'
+                }
+            },
+            destroyed: function () {
+                console.log('destroyed')
+            }
+        })
+        let mountedLabel = new linkedLabel().$mount('linkedlabel')
+        new linkedLabel().$mount('#linkedLabel')
+        let app = new Vue({
+            el: "#extend",
+            data: {
+                vueUrl: 'https://cn.vuejs.org'
+            },
+        })
+        function destroy() {
+            mountedLabel.$destroy()
+        }
+    </script>
+</body>
+</html>

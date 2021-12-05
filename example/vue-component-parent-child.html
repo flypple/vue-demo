@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component父子组件实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component父子组件实例</h1>
+<hr>
+<div id="component-parent-child">
+    <animal></animal>
+</div>
+<script type="text/javascript">
+    let city = {
+        template: `<div style="color:red">四川</div>`,
+    }
+    let animal = {
+        template: `<div><div>熊猫</div><div>来自</div><city></city></div>`,
+        components: {
+            'city': city
+        }
+    }
+    let app = new Vue({
+        el: "#component-parent-child",
+        data: {
+            from: 'China'
+        },
+        components: {
+            'animal': animal
+        }
+    })
+</script>
+</body>
+</html>

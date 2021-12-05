@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch实例</h1>
+    <hr>
+    <div id="vue-watch">
+        <div>{{ num }}</div>
+        <div>{{ num2 }}</div>
+        <div><button @click="add">调用add</button></div>
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#vue-watch",
+            data: {
+                num: 1,
+                num2: 1,
+            },
+            methods: {
+                add() {
+                    this.num++
+                }
+            },
+            watch: {
+                num: function (newValue, oldValue) {
+                    this.num2 = newValue * newValue
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-directive实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue-directive实例</h1>
+<hr>
+<div id="vue-directive">
+    <div v-vuecolor="color">
+        {{ message }}
+    </div>
+    <div>
+        <button @click="changeColor">改变颜色</button>
+    </div>
+    <div style="margin-top: 10px">
+        <button @click="unbind">解绑vuecolor指令</button>
+    </div>
+</div>
+<script type="text/javascript">
+   /* Vue.directive('vuecolor', function (el, building) {
+        console.log(el)
+        console.log(building)
+        console.log(building.name)
+        el.style = 'color:' + building.value
+    })*/
+    let vueColor = Vue.directive('vuecolor', {
+        bind(el, ref, v) {
+            console.log(el)
+            console.log(ref)
+            el.style = 'color:' + ref.value
+        },
+        inserted() {
+            console.log('inserted')
+        },
+        update(el, ref) {
+            console.log(el)
+            console.log(ref)
+            el.style = 'color:' + ref.value
+            console.log('update')
+        },
+        componentUpdated() {
+            console.log('componentUpdated')
+        },
+        unbind() {
+            console.log('unbind')
+        }
+    })
+    let app = new Vue({
+        el: "#vue-directive",
+        data: {
+            message: 'Hello World!',
+            color: 'red'
+        },
+        methods: {
+            changeColor() {
+                if (this.color === 'red') {
+                    // Vue.set(app.$data, 'color', 'green')
+                    this.color = 'green'
+                } else {
+                    // Vue.set(app.$data, 'color', 'red')
+                    this.color = 'red'
+                }
+            },
+            unbind() {
+                app.$destroy()
+            }
+        }
+    })
+</script>
+</body>
+</html>
